@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navigation_item_home"
+            android:icon="@mipmap/ic_launcher"
+            android:title="首页" />
+        <item
+            android:id="@+id/navigation_item_blog"
+            android:icon="@mipmap/ic_launcher"
+            android:title="我的简书" />
+        <item
+            android:id="@+id/navigation_item_csdn"
+            android:icon="@mipmap/ic_launcher"
+            android:title="我的CSDN" />
+    </group>
+
+</menu>
