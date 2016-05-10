@@ -14,9 +14,10 @@ import android.view.MenuItem;
 
 import com.cayden.collect.R;
 import com.cayden.collect.activity.base.BaseActivity;
+import com.cayden.collect.fragment.BlogFragment;
 import com.cayden.collect.fragment.CsdnFragment;
 import com.cayden.collect.fragment.HomeFragment;
-import com.cayden.collect.fragment.BlogFragment;
+import com.cayden.collect.fragment.OkHttpFragment;
 import com.cayden.collect.fragment.base.WebViewFragment;
 import com.cayden.collect.utils.ViewUtils;
 
@@ -132,6 +133,10 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_csdn:
                         mToolbar.setTitle("我的CSDN");
                         switchFragment(CsdnFragment.class);
+                        break;
+                    case R.id.navigation_item_okhttp:
+                        mToolbar.setTitle(R.string.drawer_title_okhttp);
+                        switchFragment(OkHttpFragment.class);
                         break;
                     default:
                         break;

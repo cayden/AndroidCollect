@@ -2,7 +2,7 @@
     <string name="app_name">AndroidCollect</string>
     <string name="action_settings">Settings</string>
     <string name="app_title_name">首页</string>
-
+    <string name="drawer_title_okhttp">OkHttp使用</string>
 
 
     <string name="action_share">分享</string>

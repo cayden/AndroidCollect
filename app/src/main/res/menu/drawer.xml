@@ -17,6 +17,10 @@
             android:id="@+id/navigation_item_csdn"
             android:icon="@mipmap/ic_launcher"
             android:title="我的CSDN" />
+        <item
+            android:id="@+id/navigation_item_okhttp"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_title_okhttp" />
     </group>
 
 </menu>
