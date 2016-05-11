@@ -5,11 +5,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cayden.collect.R;
 import com.cayden.collect.fragment.base.BaseFragment;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -25,12 +29,14 @@ public class OkHttpFragment extends BaseFragment implements View.OnClickListener
 	private static final String TAG=OkHttpFragment.class.getSimpleName();
 
 	private static OkHttpClient client=new OkHttpClient();
-	private Button syncBtn,asyncBtn;
+	private Button syncBtn,asyncBtn,downloadBtn;
 	private TextView tvtext;
 	private String result;
 	private static final String SYNC_URL="http://www.weather.com.cn/data/sk/101010100.html";
 
 	private static final String ASYNC_URL="http://www.weather.com.cn/data/sk/101010300.html";
+
+	private static final String DOWN_URL="http://mp.weixin.qq.com/wiki/static/assets/0c8ee53aa494962cb19c2262a1209b6d.png";
 
 	/**
 	 * 在这里直接设置连接超时，静态方法内，在构造方法被调用前就已经初始话了
@@ -51,10 +57,12 @@ public class OkHttpFragment extends BaseFragment implements View.OnClickListener
 	protected void initView() {
 		syncBtn=customFindViewById(R.id.syncBtn);
 		asyncBtn=customFindViewById(R.id.asyncBtn);
+		downloadBtn=customFindViewById(R.id.downloadBtn);
 		tvtext=customFindViewById(R.id.result);
 
 		syncBtn.setOnClickListener(this);
 		asyncBtn.setOnClickListener(this);
+		downloadBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -65,6 +73,9 @@ public class OkHttpFragment extends BaseFragment implements View.OnClickListener
 				break;
 			case R.id.asyncBtn:
 				initAsyncGet();
+				break;
+			case R.id.downloadBtn:
+				downloadFile();
 				break;
 		}
 	}
@@ -136,5 +147,41 @@ public class OkHttpFragment extends BaseFragment implements View.OnClickListener
 				});
 			}
 		}).start();
+	}
+
+	private void downloadFile(){
+		request = new Request.Builder().url(DOWN_URL).build();
+		OkHttpClient client = new OkHttpClient();
+		client.newCall(request).enqueue(new Callback() {
+			@Override
+			public void onFailure(Call call, IOException e) {
+
+			}
+
+			@Override
+			public void onResponse(Call call, Response response) throws IOException {
+
+				//把请求成功的response转为字节流
+				InputStream inputStream = response.body().byteStream();
+				//在这里用到了文件输出流
+				FileOutputStream fileOutputStream = new FileOutputStream(new File("/sdcard/0c8ee53aa494962cb19c2262a1209b6d.png"));
+				//定义一个字节数组
+				byte[] buffer = new byte[2048];
+				int len = 0;
+				while ((len = inputStream.read(buffer)) != -1) {
+					//写出到文件
+					fileOutputStream.write(buffer, 0, len);
+				}
+				//关闭输出流
+				fileOutputStream.flush();
+				getActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(getActivity(),"文件下载成功...",Toast.LENGTH_SHORT).show();
+					}
+				});
+
+			}
+		});
 	}
 }
