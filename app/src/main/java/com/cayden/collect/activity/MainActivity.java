@@ -145,7 +145,8 @@ public class MainActivity extends BaseActivity {
                         switchFragment(OkHttpFragment.class);
                         break;
                     case R.id.navigation_item_memo:
-                        Intent intent = new Intent(MainActivity.this, TasksActivity.class);
+                        Intent intent =
+                                        new Intent(MainActivity.this, TasksActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
