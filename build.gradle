@@ -21,3 +21,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+// Define versions in a single place
+ext {
+    // App dependencies
+    guavaVersion = '18.0'
+
+    espressoVersion = '2.2.1'
+}

@@ -1,5 +1,6 @@
 package com.cayden.collect.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,7 @@ import com.cayden.collect.fragment.CsdnFragment;
 import com.cayden.collect.fragment.HomeFragment;
 import com.cayden.collect.fragment.OkHttpFragment;
 import com.cayden.collect.fragment.base.WebViewFragment;
+import com.cayden.collect.memo.tasks.TasksActivity;
 import com.cayden.collect.utils.ViewUtils;
 
 /**
@@ -31,19 +33,23 @@ public class MainActivity extends BaseActivity {
     private Toolbar mToolbar;
     private NavigationView mNavigationView;//侧边菜单项
 
+    private static final String CURRENT_FILTERING_KEY = "CURRENT_FILTERING_KEY";
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment;
 
     private int mCurrentSelectMenuIndex = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Create the presenter
 
         if (savedInstanceState == null)
             Log.i(TAG, "NULL mCurrentSelectMenuIndex:" + mCurrentSelectMenuIndex);
         else {
             mCurrentSelectMenuIndex = savedInstanceState.getInt("currentSelectMenuIndex", 0);
             Log.i(TAG, "NOT NULL mCurrentSelectMenuIndex:" + mCurrentSelectMenuIndex);
+
         }
 
 
@@ -138,6 +144,13 @@ public class MainActivity extends BaseActivity {
                         mToolbar.setTitle(R.string.drawer_title_okhttp);
                         switchFragment(OkHttpFragment.class);
                         break;
+                    case R.id.navigation_item_memo:
+                        Intent intent = new Intent(MainActivity.this, TasksActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+
+                        break;
                     default:
                         break;
                 }
@@ -188,4 +201,6 @@ public class MainActivity extends BaseActivity {
             System.exit(0);
         }
     }
+
+
 }

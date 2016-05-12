@@ -21,6 +21,11 @@
             android:id="@+id/navigation_item_okhttp"
             android:icon="@mipmap/ic_launcher"
             android:title="@string/drawer_title_okhttp" />
+
+        <item
+            android:id="@+id/navigation_item_memo"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_title_memo" />
     </group>
 
 </menu>
