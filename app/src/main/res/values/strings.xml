@@ -4,6 +4,7 @@
     <string name="app_title_name">首页</string>
     <string name="drawer_title_okhttp">OkHttp使用</string>
     <string name="drawer_title_memo">备忘录</string>
+    <string name="drawer_title_messenger">Messenger</string>
 
     <string name="action_share">分享</string>
     <string name="action_search">搜索</string>

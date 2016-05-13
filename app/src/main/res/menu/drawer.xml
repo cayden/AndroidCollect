@@ -26,6 +26,11 @@
             android:id="@+id/navigation_item_memo"
             android:icon="@mipmap/ic_launcher"
             android:title="@string/drawer_title_memo" />
+
+        <item
+            android:id="@+id/navigation_item_messenger"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_title_messenger" />
     </group>
 
 </menu>

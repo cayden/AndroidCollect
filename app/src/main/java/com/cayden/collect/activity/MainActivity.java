@@ -18,6 +18,7 @@ import com.cayden.collect.activity.base.BaseActivity;
 import com.cayden.collect.fragment.BlogFragment;
 import com.cayden.collect.fragment.CsdnFragment;
 import com.cayden.collect.fragment.HomeFragment;
+import com.cayden.collect.fragment.MessengerFragment;
 import com.cayden.collect.fragment.OkHttpFragment;
 import com.cayden.collect.fragment.base.WebViewFragment;
 import com.cayden.collect.memo.tasks.TasksActivity;
@@ -151,6 +152,9 @@ public class MainActivity extends BaseActivity {
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
 
+                        break;
+                    case R.id.navigation_item_messenger:
+                        switchFragment(MessengerFragment.class);
                         break;
                     default:
                         break;

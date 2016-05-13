@@ -26,6 +26,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".memo.tasks.TasksActivity"></activity>
+
+
+        <service android:name=".service.MessengerService"  android:enabled="true"
+            android:exported="true">
+
+        </service>
     </application>
 
 </manifest>
