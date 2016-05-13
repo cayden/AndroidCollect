@@ -47,6 +47,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         mLayout=customFindViewById(R.id.id_ll_container);
         mTvState=customFindViewById(R.id.id_tv_callback);
         mBtnAdd=customFindViewById(R.id.id_btn_add);
+
         mBtnAdd.setOnClickListener(this);
         bindServiceInvoked();
     }
@@ -90,6 +91,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 executeAdd();
 
                 break;
+
         }
     }
 
@@ -121,13 +123,18 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     private void bindServiceInvoked()
     {
         Intent intent = new Intent(getActivity(), MessengerService.class);
-        getActivity().bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+        getActivity().getApplicationContext().bindService(intent, mConn, Context.BIND_AUTO_CREATE);
         Log.e(TAG, "bindService invoked !");
+    }
+
+    private void unbindServiceInvoked(){
+        getActivity().getApplicationContext().unbindService(mConn);
+        Log.e(TAG, "unbindService invoked !");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().unbindService(mConn);
+        unbindServiceInvoked();
     }
 }
