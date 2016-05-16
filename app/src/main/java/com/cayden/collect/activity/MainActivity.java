@@ -17,6 +17,7 @@ import com.cayden.collect.R;
 import com.cayden.collect.activity.base.BaseActivity;
 import com.cayden.collect.fragment.BlogFragment;
 import com.cayden.collect.fragment.CsdnFragment;
+import com.cayden.collect.fragment.FrozenuiFragment;
 import com.cayden.collect.fragment.HomeFragment;
 import com.cayden.collect.fragment.MessengerFragment;
 import com.cayden.collect.fragment.OkHttpFragment;
@@ -154,7 +155,12 @@ public class MainActivity extends BaseActivity {
 
                         break;
                     case R.id.navigation_item_messenger:
+                        mToolbar.setTitle(R.string.drawer_title_messenger);
                         switchFragment(MessengerFragment.class);
+                        break;
+                    case R.id.navigation_item_frozenui:
+                        mToolbar.setTitle(R.string.drawer_title_frozenui);
+                        switchFragment(FrozenuiFragment.class);
                         break;
                     default:
                         break;
