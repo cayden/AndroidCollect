@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cayden.collect.R;
+import com.cayden.collect.activity.AIDLActivity;
 import com.cayden.collect.fragment.base.BaseFragment;
 import com.cayden.collect.service.MessengerService;
 
@@ -49,6 +50,8 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         mBtnAdd=customFindViewById(R.id.id_btn_add);
 
         mBtnAdd.setOnClickListener(this);
+
+        customFindViewById(R.id.id_btn_aidl).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -90,6 +93,10 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
             case R.id.id_btn_add:
                 executeAdd();
 
+                break;
+            case R.id.id_btn_aidl:
+                Intent intent=new Intent(getActivity(), AIDLActivity.class);
+                startActivity(intent);
                 break;
 
         }

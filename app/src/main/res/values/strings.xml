@@ -14,9 +14,6 @@
     <string name="close">关闭</string>
 
 
-
-
-
     <string name="add_task">New TO-DO</string>
     <string name="edit_task">Edit TO-DO</string>
     <string name="task_marked_complete">Task marked complete</string>
@@ -56,5 +53,6 @@
     <string name="no_tasks_completed">You have no completed TO-DOs!</string>
     <string name="no_tasks_add">Add a TO-DO item +</string>
     <string name="refresh">Refresh</string>
+    <string name="title_activity_aidl">AIDLActivity</string>
 
 </resources>
