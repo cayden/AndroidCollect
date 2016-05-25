@@ -4,19 +4,25 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cayden.collect.R;
 import com.cayden.collect.activity.AIDLActivity;
+import com.cayden.collect.custom.FloatView;
 import com.cayden.collect.fragment.base.BaseFragment;
 import com.cayden.collect.service.MessengerService;
 
@@ -52,6 +58,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         mBtnAdd.setOnClickListener(this);
 
         customFindViewById(R.id.id_btn_aidl).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_float).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -98,8 +105,34 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 Intent intent=new Intent(getActivity(), AIDLActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.id_btn_float:
+                if (Build.VERSION.SDK_INT >= 23) {
+                    if (Settings.canDrawOverlays(getActivity())) {
+                        showFloatView();
+                    } else {
+                        Intent intent1 = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                        startActivity(intent1);
+                    }
+                } else {
+                    showFloatView();
+                }
+                break;
 
         }
+    }
+    public void showFloatView() {
+        WindowManager windowManager = (WindowManager) getActivity().getSystemService(getActivity().WINDOW_SERVICE);
+        FloatView floatView = new FloatView(getActivity().getApplicationContext());
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+        params.type = WindowManager.LayoutParams.TYPE_PHONE;
+        params.format = PixelFormat.RGBA_8888;
+        params.gravity = Gravity.LEFT | Gravity.TOP;
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        params.width = 150;
+        params.height = 150;
+        params.x = 0;
+        params.y = 0;
+        windowManager.addView(floatView, params);
     }
 
     private int num;
