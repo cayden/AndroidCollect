@@ -1,10 +1,8 @@
-package com.cayden.collect.memo.tasks;
+package com.cayden.collect.memo.statistics;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.NavigationView;
-import android.support.test.espresso.IdlingResource;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -14,30 +12,27 @@ import android.view.MenuItem;
 
 import com.cayden.collect.R;
 import com.cayden.collect.memo.Injection;
-import com.cayden.collect.memo.statistics.StatisticsActivity;
+import com.cayden.collect.memo.tasks.TasksActivity;
 import com.cayden.collect.memo.util.ActivityUtils;
-import com.cayden.collect.memo.util.EspressoIdlingResource;
 
 /**
- * Created by cuiran on 16/5/12.
+ * Created by cuiran on 16/5/27.
  */
-public class TasksActivity extends AppCompatActivity {
-
-    private static final String CURRENT_FILTERING_KEY = "CURRENT_FILTERING_KEY";
+public class StatisticsActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-
-    private TasksPresenter mTasksPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tasks_act);
+
+        setContentView(R.layout.statistics_act);
 
         // Set up the toolbar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
+        ab.setTitle(R.string.statistics_title);
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
 
@@ -49,32 +44,16 @@ public class TasksActivity extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        TasksFragment tasksFragment =
-                (TasksFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
-        if (tasksFragment == null) {
-            // Create the fragment
-            tasksFragment = TasksFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(), tasksFragment, R.id.contentFrame);
+        StatisticsFragment statisticsFragment = (StatisticsFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.contentFrame);
+        if (statisticsFragment == null) {
+            statisticsFragment = StatisticsFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
+                    statisticsFragment, R.id.contentFrame);
         }
 
-        // Create the presenter
-        mTasksPresenter = new TasksPresenter(
-                Injection.provideTasksRepository(getApplicationContext()), tasksFragment);
-
-        // Load previously saved state, if available.
-        if (savedInstanceState != null) {
-            TasksFilterType currentFiltering =
-                    (TasksFilterType) savedInstanceState.getSerializable(CURRENT_FILTERING_KEY);
-            mTasksPresenter.setFiltering(currentFiltering);
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(CURRENT_FILTERING_KEY, mTasksPresenter.getFiltering());
-
-        super.onSaveInstanceState(outState);
+        new StatisticsPresenter(
+                Injection.provideTasksRepository(getApplicationContext()), statisticsFragment);
     }
 
     @Override
@@ -95,14 +74,14 @@ public class TasksActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.list_navigation_menu_item:
-                                // Do nothing, we're already on that screen
-                                break;
-                            case R.id.statistics_navigation_menu_item:
                                 Intent intent =
-                                        new Intent(TasksActivity.this, StatisticsActivity.class);
+                                        new Intent(StatisticsActivity.this, TasksActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
+                                break;
+                            case R.id.statistics_navigation_menu_item:
+                                // Do nothing, we're already on that screen
                                 break;
                             default:
                                 break;
@@ -113,10 +92,5 @@ public class TasksActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-    }
-
-    @VisibleForTesting
-    public IdlingResource getCountingIdlingResource() {
-        return EspressoIdlingResource.getIdlingResource();
     }
 }

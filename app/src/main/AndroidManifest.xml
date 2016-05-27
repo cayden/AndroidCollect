@@ -25,6 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".memo.tasks.TasksActivity" />
+        <activity android:name=".memo.addedittask.AddEditTaskActivity" />
+        <activity android:name=".memo.taskdetail.TaskDetailActivity" />
+        <activity android:name=".memo.statistics.StatisticsActivity" />
 
         <service
             android:name=".service.MessengerService"
