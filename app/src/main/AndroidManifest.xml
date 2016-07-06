@@ -46,6 +46,12 @@
             android:label="@string/title_activity_aidl"
             android:theme="@style/AppTheme">
         </activity>
+
+        <activity
+            android:name=".activity.DrawSimpleCircle"
+            android:label="@string/title_activity_aidl"
+            android:theme="@style/AppTheme">
+        </activity>
         <activity android:name=".activity.DeepLinksActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>

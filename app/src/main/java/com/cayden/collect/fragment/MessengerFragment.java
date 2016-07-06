@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.cayden.collect.R;
 import com.cayden.collect.activity.AIDLActivity;
+import com.cayden.collect.activity.DrawSimpleCircle;
 import com.cayden.collect.custom.FloatView;
 import com.cayden.collect.fragment.base.BaseFragment;
 import com.cayden.collect.service.MessengerService;
@@ -59,6 +60,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
 
         customFindViewById(R.id.id_btn_aidl).setOnClickListener(this);
         customFindViewById(R.id.id_btn_float).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_circle).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -104,6 +106,11 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
             case R.id.id_btn_aidl:
                 Intent intent=new Intent(getActivity(), AIDLActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.id_btn_circle:
+                Intent intent2=new Intent(getActivity(), DrawSimpleCircle.class);
+                startActivity(intent2);
+
                 break;
             case R.id.id_btn_float:
                 if (Build.VERSION.SDK_INT >= 23) {
