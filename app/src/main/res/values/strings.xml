@@ -54,5 +54,6 @@
     <string name="no_tasks_add">Add a TO-DO item +</string>
     <string name="refresh">Refresh</string>
     <string name="title_activity_aidl">AIDLActivity</string>
-
+    <string name="title_activity_circle">圆</string>
+    <string name="title_activity_radia">进度条</string>
 </resources>
