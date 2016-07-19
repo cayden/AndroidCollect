@@ -48,6 +48,8 @@ public class RadialProgressWidget extends View {
     private float mSecondaryTextSize = 0.0f;
     private int mDiameter = 200;
 
+    private boolean isScaning=true;
+
     public RadialProgressWidget(Context context) {
         super(context);
         initView();
@@ -105,6 +107,20 @@ public class RadialProgressWidget extends View {
         float textWidth = paint.measureText(str);
         canvas.drawText(str, centerX - (textWidth/2), centerY, paint);
     }
+
+    /**
+     * 改变颜色数组内颜色值位置，实现颜色转动
+     * @param arr 颜色数组
+     */
+    public void rotateArray(int[] arr) {
+        int tmp = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[arr.length - 1] = tmp;
+//        invalidate();   //重绘
+    }
+
 
     /**
      * 该方法会在onCreate之后，onDraw之前调用
