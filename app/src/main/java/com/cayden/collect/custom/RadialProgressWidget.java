@@ -83,7 +83,7 @@ public class RadialProgressWidget extends View {
         Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
 
 
-        // 画大圆
+        //画大圆
         RectF bigOval=new RectF(centerX-bigR,centerY-bigR,centerX+bigR,centerY+bigR);
         paint.setColor(BORDER_GREEN_COLOR);
         canvas.drawArc(bigOval,start,360,true,paint);
@@ -98,7 +98,7 @@ public class RadialProgressWidget extends View {
         paint.setColor(Color.WHITE);
         canvas.drawArc(litterOval,start,360,true,paint);
 
-        //画字
+        //画字或者画图片
         int color=SECTION_GREEN_COLORS[2];
         String str="设备安全";
         paint.setColor(color);
