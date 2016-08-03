@@ -13,6 +13,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cayden.collect.mode.reflect.Student;
+
+import java.lang.reflect.Field;
+
 /**
  * Created by cuiran on 16/7/6.
  */
@@ -29,6 +33,24 @@ public class DrawSimpleCircle extends Activity {
         int height = metrics.heightPixels;
 
         setContentView(new MyCicle(this, width, height));
+
+        testReflect();
+    }
+
+    private void testReflect(){
+        Student student=new Student();
+        try{
+            Field property1=student.getClass().getDeclaredField("id");
+            System.out.println(property1);//private
+            Field property3=student.getClass().getField("nickname");
+            System.out.println(property3);//public java.lang.String com.cx.test.Student.nickname
+
+            Field property4=student.getClass().getDeclaredField("ee_1");
+            System.out.println(property4);//public java.lang.String com.cx.test.Student.ee_1
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     class MyCicle extends View{
