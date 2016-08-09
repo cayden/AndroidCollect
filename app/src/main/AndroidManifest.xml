@@ -6,8 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".CollectApplication"
         android:allowBackup="true"
@@ -21,6 +21,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +33,7 @@
         <service
             android:name=".service.MessengerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".service.AIDLServerService"
             android:process=":remote">
@@ -44,32 +45,26 @@
         <activity
             android:name=".activity.AIDLActivity"
             android:label="@string/title_activity_aidl"
-            android:theme="@style/AppTheme">
-        </activity>
-
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".activity.DrawSimpleCircle"
             android:label="@string/title_activity_circle"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".activity.DrawCircleActivity"
             android:label="@string/title_activity_radia"
-            android:theme="@style/AppTheme">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme"></activity>
         <activity android:name=".activity.DeepLinksActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data
-                    android:scheme="com.example.androidtest"
-                    />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="com.example.androidtest" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.TweenActivity"></activity>
     </application>
 
 </manifest>

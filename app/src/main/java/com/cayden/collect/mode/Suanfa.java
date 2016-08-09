@@ -60,10 +60,32 @@ public class Suanfa {
         }
     }
 
+    /**
+     * 4.有一组数，求这组数的最大数和最小数的绝对值是多少？
+     */
+    private static void f4(){
+        int [] arr=new int []{4, 6, 9, 52, 36, 97, -63, -55, -1, 64, -36 };
+        int len=arr.length;
+        int max=0;
+        int min=0;
+        for(int i=0;i<len;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+
+            if(arr[i]<min){
+                min=arr[i];
+            }
+        }
+
+        System.out.println(Math.abs(max-min));
+
+    }
 
     public static void main(String args[]){
 //        Suanfa.light();
 //        Suanfa.strRevers();
-        Suanfa.f3();
+//        Suanfa.f3();
+        Suanfa.f4();
     }
 }

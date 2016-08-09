@@ -24,6 +24,7 @@ import com.cayden.collect.R;
 import com.cayden.collect.activity.AIDLActivity;
 import com.cayden.collect.activity.DrawCircleActivity;
 import com.cayden.collect.activity.DrawSimpleCircle;
+import com.cayden.collect.activity.TweenActivity;
 import com.cayden.collect.custom.FloatView;
 import com.cayden.collect.fragment.base.BaseFragment;
 import com.cayden.collect.service.MessengerService;
@@ -63,6 +64,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         customFindViewById(R.id.id_btn_float).setOnClickListener(this);
         customFindViewById(R.id.id_btn_circle).setOnClickListener(this);
         customFindViewById(R.id.id_btn_radia).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_tween).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -131,6 +133,10 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 } else {
                     showFloatView();
                 }
+                break;
+            case R.id.id_btn_tween:
+                Intent intent4=new Intent(getActivity(), TweenActivity.class);
+                startActivity(intent4);
                 break;
 
         }
