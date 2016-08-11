@@ -3,13 +3,18 @@ package com.cayden.collect.activity.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import cn.bmob.v3.exception.BmobException;
 
 /**
  * Created by cuiran on 16/5/10.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-
+    public static String TAG = "BaseActivity";
+    Toast mToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,34 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void init() {
 
     }
+
+    public void toast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+    public void showToast(int resId) {
+        if (mToast == null) {
+            mToast = Toast.makeText(getApplicationContext(), resId,
+                    Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(resId);
+        }
+        mToast.show();
+    }
+
+    public static void log(String msg) {
+        Log.i(TAG,"===============================================================================");
+        Log.i(TAG, msg);
+    }
+
+    public static void loge(Throwable e) {
+        Log.i(TAG,"===============================================================================");
+        if(e instanceof BmobException){
+            Log.e(TAG, "错误码："+((BmobException)e).getErrorCode()+",错误描述："+((BmobException)e).getMessage());
+        }else{
+            Log.e(TAG, "错误描述："+e.getMessage());
+        }
+    }
+
 
     protected abstract void initView();
 

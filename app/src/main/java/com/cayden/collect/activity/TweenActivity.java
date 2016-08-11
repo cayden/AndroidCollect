@@ -7,6 +7,10 @@ import android.view.View;
 import com.cayden.collect.R;
 import com.cayden.collect.activity.base.BaseActivity;
 
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import rx.Subscriber;
+
 public class TweenActivity extends BaseActivity {
 
     ImageView imageView;
@@ -20,8 +24,46 @@ public class TweenActivity extends BaseActivity {
         imageView=customFindViewById(R.id.imageView);
     }
 
+    private void testLogin() {
+        final BmobUser bu2 = new BmobUser();
+        bu2.setUsername("smile");
+        bu2.setPassword("123456");
+        //login回调
+//		bu2.login(new SaveListener<BmobUser>() {
+//
+//			@Override
+//			public void done(BmobUser bmobUser, BmobException e) {
+//				if(e==null){
+//					toast(bu2.getUsername() + "登陆成功");
+//					testGetCurrentUser();
+//				}else{
+//					loge(e);
+//				}
+//			}
+//		});
+        //新增加的Observable
+        bu2.loginObservable(BmobUser.class).subscribe(new Subscriber<BmobUser>() {
+            @Override
+            public void onCompleted() {
+                log("----onCompleted----");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                loge(new BmobException(e));
+            }
+
+            @Override
+            public void onNext(BmobUser bmobUser) {
+                toast(bmobUser.getUsername() + "登陆成功");
+
+            }
+        });
+    }
+
     // 移动效果
     public void translateImpl(View v) {
+        testLogin();
         // XML文件
         Animation animation = AnimationUtils.loadAnimation(this,
                 R.anim.translate_demo);

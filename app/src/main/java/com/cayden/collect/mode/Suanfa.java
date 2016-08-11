@@ -1,5 +1,7 @@
 package com.cayden.collect.mode;
 
+import java.util.LinkedList;
+
 /**
  * Created by cuiran on 16/8/2.
  */
@@ -82,10 +84,50 @@ public class Suanfa {
 
     }
 
+    /**
+     * 5.50个人围成一圈数到三和三的倍数时出圈，问剩下的人是谁？在原来的位置是多少？
+     */
+    private static void f5(int n,int m){
+        LinkedList ll=new LinkedList();
+        for(int i=0;i<n;i++){
+            ll.add(new Integer(i+1));
+        }
+        int removed=-1;
+        while(ll.size()>1){
+            removed=(removed+m)%ll.size();
+            ll.remove(removed--);
+        }
+        System.out.println(((Integer) ll.get(0)).intValue());
+    }
+
+    /**
+     *6.【java数据结构和算法】给定一个数n,将其扩大为原来的15倍，不能使用乘法、除法和加法，
+     * @param n
+     */
+    private static void f6(int n){
+        int result=(n<<4)-n;
+        System.out.println(result);
+    }
+
+    /**
+     * 7.1000台阶 一个人每次走1个或2个 有多少走法
+     * @param n
+     * @return
+     */
+    private static int f7(int n){
+        if(n==1)return 1;
+        if(n==2)return 2;
+        if(n==3)return 3;
+
+        return f7(n-1)+f7(n-2);
+    }
     public static void main(String args[]){
 //        Suanfa.light();
 //        Suanfa.strRevers();
 //        Suanfa.f3();
-        Suanfa.f4();
+//        Suanfa.f4();
+//        Suanfa.f5(50,3);
+//        Suanfa.f6(10);
+        System.out.print("result:"+Suanfa.f7(50));
     }
 }
