@@ -163,6 +163,14 @@ public class MainActivity extends BaseActivity {
                         mToolbar.setTitle(R.string.drawer_title_frozenui);
                         switchFragment(FrozenuiFragment.class);
                         break;
+                    case R.id.navigation_item_record:
+                        Intent intent1 =
+                                new Intent(MainActivity.this, MediaProjectionActivity.class);
+                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent1);
+
+                        break;
                     default:
                         break;
                 }

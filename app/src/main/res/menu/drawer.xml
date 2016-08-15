@@ -37,7 +37,10 @@
             android:icon="@mipmap/ic_launcher"
             android:title="@string/drawer_title_frozenui" />
 
-
+        <item
+            android:id="@+id/navigation_item_record"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_title_record" />
     </group>
 
 </menu>
