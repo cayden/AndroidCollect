@@ -44,4 +44,7 @@ dependencies {
     compile "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
     //bmob-sdk
     compile 'cn.bmob.android:bmob-sdk:3.5.1'
+    //日志框架
+    compile 'com.jiongbull:jlog-qiniu:1.0.0'
+
 }

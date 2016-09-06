@@ -1,7 +1,6 @@
 package com.cayden.collect.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -25,6 +24,7 @@ import com.cayden.collect.fragment.OkHttpFragment;
 import com.cayden.collect.fragment.base.WebViewFragment;
 import com.cayden.collect.memo.tasks.TasksActivity;
 import com.cayden.collect.utils.ViewUtils;
+import com.jiongbull.jlog.JLog;
 
 /**
  *Created by cuiran on 16/5/10.
@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity {
             Log.i(TAG, "NOT NULL mCurrentSelectMenuIndex:" + mCurrentSelectMenuIndex);
 
         }
-
+       JLog.d("测试日志框架");
 
     }
 
@@ -84,43 +84,43 @@ public class MainActivity extends BaseActivity {
         setNavigationViewItemClickListener();
         initDefaultFragment();
 
-
+        JLog.d("initView");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("currentSelectMenuIndex", mCurrentSelectMenuIndex);
-        Log.i(TAG, "onSaveInstanceState");
+        JLog.i(TAG, "onSaveInstanceState");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         //super.onRestoreInstanceState(savedInstanceState);
-        Log.i(TAG,"onRestoreInstanceState");
+        JLog.i(TAG,"onRestoreInstanceState");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause");
+        JLog.i(TAG, "onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i(TAG, "onStop");
+        JLog.i(TAG, "onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i(TAG, "onDestroy");
+        JLog.i(TAG, "onDestroy");
     }
 
     //init the default checked fragment
     private void initDefaultFragment() {
-        Log.i(TAG, "initDefaultFragment");
+        JLog.i(TAG, "initDefaultFragment");
         mCurrentFragment = ViewUtils.createFragment(HomeFragment.class);
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
         mNavigationView.getMenu().getItem(mCurrentSelectMenuIndex).setChecked(true);
@@ -185,10 +185,10 @@ public class MainActivity extends BaseActivity {
     private void switchFragment(Class<?> clazz) {
         Fragment to = ViewUtils.createFragment(clazz);
         if (to.isAdded()) {
-            Log.i(TAG, "Added");
+            JLog.i(TAG, "Added");
             mFragmentManager.beginTransaction().hide(mCurrentFragment).show(to).commitAllowingStateLoss();
         } else {
-            Log.i(TAG, "Not Added");
+            JLog.i(TAG, "Not Added");
             mFragmentManager.beginTransaction().hide(mCurrentFragment).add(R.id.frame_content, to).commitAllowingStateLoss();
         }
         mCurrentFragment = to;
