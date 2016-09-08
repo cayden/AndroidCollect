@@ -7,6 +7,7 @@
     <string name="drawer_title_messenger">Messenger</string>
     <string name="drawer_title_frozenui">frozenui demo</string>
     <string name="drawer_title_record">录制桌面</string>
+    <string name="drawer_title_mvp">RxJava和MVP</string>
     <string name="drawer_title_circle">画圆</string>
 
     <string name="action_share">分享</string>
@@ -57,4 +58,5 @@
     <string name="title_activity_aidl">AIDLActivity</string>
     <string name="title_activity_circle">圆</string>
     <string name="title_activity_radia">进度条</string>
+    <string name="title_activity_mvp">MvpActivity</string>
 </resources>

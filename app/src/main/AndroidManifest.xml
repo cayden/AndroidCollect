@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".CollectApplication"
         android:allowBackup="true"
@@ -47,15 +48,15 @@
         <activity
             android:name=".activity.AIDLActivity"
             android:label="@string/title_activity_aidl"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.DrawSimpleCircle"
             android:label="@string/title_activity_circle"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.DrawCircleActivity"
             android:label="@string/title_activity_radia"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".activity.DeepLinksActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -66,8 +67,13 @@
                 <data android:scheme="com.example.androidtest" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TweenActivity"></activity>
-        <activity android:name=".activity.MediaProjectionActivity"
+        <activity android:name=".activity.TweenActivity" />
+        <activity
+            android:name=".activity.MediaProjectionActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.mvp.MvpActivity"
+            android:label="@string/title_activity_mvp"
             android:theme="@style/AppTheme"></activity>
     </application>
 

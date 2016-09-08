@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.cayden.collect.R;
 import com.cayden.collect.activity.base.BaseActivity;
+import com.cayden.collect.activity.mvp.MvpActivity;
 import com.cayden.collect.fragment.BlogFragment;
 import com.cayden.collect.fragment.CsdnFragment;
 import com.cayden.collect.fragment.FrozenuiFragment;
@@ -146,6 +147,14 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_okhttp:
                         mToolbar.setTitle(R.string.drawer_title_okhttp);
                         switchFragment(OkHttpFragment.class);
+                        break;
+                    case R.id.navigation_item_mvp:
+                        Intent intent0 =
+                                new Intent(MainActivity.this, MvpActivity.class);
+//                        intent0.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent0);
+
                         break;
                     case R.id.navigation_item_memo:
                         Intent intent =
