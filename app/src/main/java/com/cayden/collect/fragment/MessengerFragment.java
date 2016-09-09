@@ -65,6 +65,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         customFindViewById(R.id.id_btn_circle).setOnClickListener(this);
         customFindViewById(R.id.id_btn_radia).setOnClickListener(this);
         customFindViewById(R.id.id_btn_tween).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_crash).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -137,6 +138,10 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
             case R.id.id_btn_tween:
                 Intent intent4=new Intent(getActivity(), TweenActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.id_btn_crash:
+                int m=5/0;
+                Log.d(TAG,""+m);
                 break;
 
         }

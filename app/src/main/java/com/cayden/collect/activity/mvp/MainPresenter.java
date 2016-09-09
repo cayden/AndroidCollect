@@ -41,10 +41,21 @@ public class MainPresenter {
          * dataAction会在由RxJava管理的IO线程—Schedulers.io() 中执行，
          * 而viewAction则会在UI线程—AndroidSchedulers.mainThread()中执行。
          */
-        final Func1<String,String> dataAction=new Func1<String, String>() {
+//        final Func1<String,String> dataAction=new Func1<String, String>() {
+//            @Override
+//            public String call(String s) {
+//                return s+dataSource.getStringFromRemote()+dataSource.getStringFromCache();
+//            }
+//        };
+
+        final Func1<Boolean,String> dataAction=new Func1<Boolean, String>() {
             @Override
-            public String call(String s) {
-                return s+dataSource.getStringFromRemote()+dataSource.getStringFromCache();
+            public String call(Boolean isCache) {
+               if(isCache){
+                   return dataSource.getStringFromCache();
+               }else{
+                   return dataSource.getStringFromRemote();
+               }
             }
         };
 
@@ -56,8 +67,8 @@ public class MainPresenter {
             }
         };
 
-
-        Observable.just("RxJava")
+        //第二个参数表示是用缓存还是远程
+        Observable.just(true,false)
                 .observeOn(Schedulers.io())
                 .map(dataAction)
                 .observeOn(AndroidSchedulers.mainThread())

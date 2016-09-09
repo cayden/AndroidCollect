@@ -2,9 +2,13 @@ package com.cayden.collect;
 
 import android.app.Application;
 
+import com.cayden.collect.activity.MainActivity;
+import com.cayden.collect.activity.mvp.MvpActivity;
 import com.jiongbull.jlog.JLog;
 import com.jiongbull.jlog.qiniu.JLogQiniu;
 import com.jiongbull.jlog.qiniu.QiniuInterface;
+import com.zxy.recovery.callback.RecoveryCallback;
+import com.zxy.recovery.core.Recovery;
 
 import java.io.IOException;
 
@@ -44,6 +48,35 @@ public class CollectApplication extends Application {
 
 //        initQiNiu();
 
+        Recovery.getInstance()
+                .debug(true)
+                .recoverInBackground(false)
+                .recoverStack(true)
+                .mainPage(MainActivity.class)
+                .callback(new MyCrashCallback())
+                .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .init(this);
+
+    }
+
+    static final class MyCrashCallback implements RecoveryCallback {
+        @Override
+        public void stackTrace(String exceptionMessage) {
+            JLog.e("zxy", "exceptionMessage:" + exceptionMessage);
+        }
+
+        @Override
+        public void cause(String cause) {
+            JLog.e("zxy", "cause:" + cause);
+        }
+
+        @Override
+        public void exception(String exceptionType, String throwClassName, String throwMethodName, int throwLineNumber) {
+            JLog.e("zxy", "exceptionClassName:" + exceptionType);
+            JLog.e("zxy", "throwClassName:" + throwClassName);
+            JLog.e("zxy", "throwMethodName:" + throwMethodName);
+            JLog.e("zxy", "throwLineNumber:" + throwLineNumber);
+        }
     }
     private  OkHttpClient mOkHttpClient=null;
     private void initQiNiu(){

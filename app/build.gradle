@@ -46,5 +46,7 @@ dependencies {
     compile 'cn.bmob.android:bmob-sdk:3.5.1'
     //日志框架
     compile 'com.jiongbull:jlog-qiniu:1.0.0'
+    //自动恢复框架
+    compile 'com.zxy.android:recovery:0.0.5'
 
 }

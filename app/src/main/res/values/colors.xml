@@ -5,7 +5,14 @@
     <color name="colorAccent">#D9B3B3</color>
     <color name="windowBackground">#fafafa</color>
 
+    <color name="recoveryColorPrimary">#C48888</color>
+    <color name="recoveryColorPrimaryDark">#B87070</color>
+    <color name="recoveryColorAccent">#BDBDBD</color>
+    <color name="recoveryTextColor">#FFFFFF</color>
+
     <drawable name="completedTaskBackground">#CCCCCC</drawable>
 
     <drawable name="touchFeedback">#CFD8DC</drawable>
+
+
 </resources>
