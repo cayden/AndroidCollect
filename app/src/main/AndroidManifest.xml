@@ -76,6 +76,8 @@
             android:name=".activity.mvp.MvpActivity"
             android:label="@string/title_activity_mvp"
             android:theme="@style/AppTheme"></activity>
+
+        <service android:name=".study.binder.BinderPoolService"/>
     </application>
 
 </manifest>

@@ -28,6 +28,11 @@ import com.cayden.collect.activity.TweenActivity;
 import com.cayden.collect.custom.FloatView;
 import com.cayden.collect.fragment.base.BaseFragment;
 import com.cayden.collect.service.MessengerService;
+import com.cayden.collect.study.binder.BinderPool;
+import com.cayden.collect.study.binder.ComputeImpl;
+import com.cayden.collect.study.binder.ICompute;
+import com.cayden.collect.study.binder.ISecurityCenter;
+import com.cayden.collect.study.binder.SecurityCenterImpl;
 
 /**
  * Created by cuiran on 16/5/13.
@@ -66,6 +71,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         customFindViewById(R.id.id_btn_radia).setOnClickListener(this);
         customFindViewById(R.id.id_btn_tween).setOnClickListener(this);
         customFindViewById(R.id.id_btn_crash).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_binder).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -143,7 +149,53 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 int m=5/0;
                 Log.d(TAG,""+m);
                 break;
+            case R.id.id_btn_binder:
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        doWork();
+//                    }
+//                });
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        doWork();
+                    }
+                }).start();
+
+                break;
+
+        }
+    }
+
+    ISecurityCenter securityCenter;
+    ICompute mCompute;
+    private void doWork(){
+        Log.d(TAG,"doWork.......");
+        BinderPool binderPool=BinderPool.getInstance(getActivity());
+        IBinder securityBinder=binderPool.queryBinder(BinderPool.BINDER_SECRITY_CENTER);
+        securityCenter=(ISecurityCenter) SecurityCenterImpl.asInterface(securityBinder);
+
+        Log.d(TAG,"访问ISecurityCenter");
+        String msg="HelloWorld ,I'm cayden";
+        Log.d(TAG,"content="+msg);
+        try {
+            String password=securityCenter.encrypt(msg);
+            Log.d(TAG,"password="+password);
+            Log.d(TAG,"decrypt="+securityCenter.decrypt(password));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        Log.d(TAG,"访问ICompute");
+        IBinder computeBinder=binderPool.queryBinder(BinderPool.BINDER_COMPUTE);
+        mCompute=(ICompute) ComputeImpl.asInterface(computeBinder);
+        try {
+            Log.d(TAG,"3+5="+mCompute.add(3,5));
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
     public void showFloatView() {

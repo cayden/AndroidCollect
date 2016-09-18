@@ -57,4 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试异常crash"/>
+
+    <Button android:id="@+id/id_btn_binder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Binder连接池"/>
 </LinearLayout>
