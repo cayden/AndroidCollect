@@ -150,12 +150,6 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 Log.d(TAG,""+m);
                 break;
             case R.id.id_btn_binder:
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        doWork();
-//                    }
-//                });
 
                 new Thread(new Runnable() {
                     @Override
