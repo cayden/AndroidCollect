@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name=".CollectApplication"
@@ -75,9 +75,11 @@
         <activity
             android:name=".activity.mvp.MvpActivity"
             android:label="@string/title_activity_mvp"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
 
-        <service android:name=".study.binder.BinderPoolService"/>
+        <service android:name=".study.binder.BinderPoolService" />
+
+        <activity android:name=".activity.HandlerThreadActivity"></activity>
     </application>
 
 </manifest>

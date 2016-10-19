@@ -62,4 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Binder连接池"/>
+
+    <Button android:id="@+id/id_btn_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HandlerThread"/>
 </LinearLayout>
