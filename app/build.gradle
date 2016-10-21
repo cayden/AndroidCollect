@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+//添加如下代码，应用apt插件
+apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
@@ -48,5 +49,10 @@ dependencies {
     compile 'com.jiongbull:jlog-qiniu:1.0.0'
     //自动恢复框架
     compile 'com.zxy.android:recovery:0.0.5'
+
+    //Dagger2.5
+    compile 'com.google.dagger:dagger:2.5'
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
 
 }

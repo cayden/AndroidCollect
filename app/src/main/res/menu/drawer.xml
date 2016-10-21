@@ -41,6 +41,10 @@
             android:id="@+id/navigation_item_frozenui"
             android:icon="@mipmap/ic_launcher"
             android:title="@string/drawer_title_frozenui" />
+        <item
+            android:id="@+id/navigation_item_dagger"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_title_dagger" />
 
         <item
             android:id="@+id/navigation_item_record"

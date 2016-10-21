@@ -6,7 +6,10 @@
     <string name="drawer_title_memo">备忘录</string>
     <string name="drawer_title_messenger">Messenger</string>
     <string name="drawer_title_frozenui">frozenui demo</string>
+    <string name="drawer_title_dagger">dagger2</string>
     <string name="drawer_title_record">录制桌面</string>
+
+
     <string name="drawer_title_mvp">RxJava和MVP</string>
     <string name="drawer_title_circle">画圆</string>
 

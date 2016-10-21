@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.cayden.collect.R;
 import com.cayden.collect.activity.base.BaseActivity;
 import com.cayden.collect.activity.mvp.MvpActivity;
+import com.cayden.collect.dagger2mvp.view.LoginActivity;
 import com.cayden.collect.fragment.BlogFragment;
 import com.cayden.collect.fragment.CsdnFragment;
 import com.cayden.collect.fragment.FrozenuiFragment;
@@ -171,6 +172,13 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_frozenui:
                         mToolbar.setTitle(R.string.drawer_title_frozenui);
                         switchFragment(FrozenuiFragment.class);
+                        break;
+                    case R.id.navigation_item_dagger:
+                        Intent intent2 =
+                                new Intent(MainActivity.this, LoginActivity.class);
+
+                        startActivity(intent2);
+
                         break;
                     case R.id.navigation_item_record:
                         Intent intent1 =

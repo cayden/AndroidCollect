@@ -79,7 +79,8 @@
 
         <service android:name=".study.binder.BinderPoolService" />
 
-        <activity android:name=".activity.HandlerThreadActivity"></activity>
+        <activity android:name=".activity.HandlerThreadActivity" />
+        <activity android:name=".dagger2mvp.view.LoginActivity"></activity>
     </application>
 
 </manifest>
