@@ -80,7 +80,11 @@
         <service android:name=".study.binder.BinderPoolService" />
 
         <activity android:name=".activity.HandlerThreadActivity" />
-        <activity android:name=".dagger2mvp.view.LoginActivity"></activity>
+        <activity android:name=".dagger2mvp.view.LoginActivity" />
+        <activity
+            android:name=".activity.TickerActivity"
+            android:label="@string/title_activity_ticker"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

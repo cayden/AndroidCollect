@@ -49,7 +49,8 @@ dependencies {
     compile 'com.jiongbull:jlog-qiniu:1.0.0'
     //自动恢复框架
     compile 'com.zxy.android:recovery:0.0.5'
-
+    //字符滚动控件
+    compile 'com.robinhood.ticker:ticker:1.1.1'
     //Dagger2.5
     compile 'com.google.dagger:dagger:2.5'
     apt 'com.google.dagger:dagger-compiler:2.5'
