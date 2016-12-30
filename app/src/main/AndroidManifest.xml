@@ -84,7 +84,9 @@
         <activity
             android:name=".activity.TickerActivity"
             android:label="@string/title_activity_ticker"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.LedActivity" />
+        <activity android:name=".activity.SendPhoneActivity"></activity>
     </application>
 
 </manifest>

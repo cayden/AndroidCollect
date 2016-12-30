@@ -25,6 +25,8 @@ import com.cayden.collect.activity.AIDLActivity;
 import com.cayden.collect.activity.DrawCircleActivity;
 import com.cayden.collect.activity.DrawSimpleCircle;
 import com.cayden.collect.activity.HandlerThreadActivity;
+import com.cayden.collect.activity.LedActivity;
+import com.cayden.collect.activity.SendPhoneActivity;
 import com.cayden.collect.activity.TickerActivity;
 import com.cayden.collect.activity.TweenActivity;
 import com.cayden.collect.custom.FloatView;
@@ -77,6 +79,8 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         customFindViewById(R.id.id_btn_thread).setOnClickListener(this);
 
         customFindViewById(R.id.id_btn_ticker).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_send).setOnClickListener(this);
+        customFindViewById(R.id.id_btn_led).setOnClickListener(this);
         bindServiceInvoked();
     }
 
@@ -172,6 +176,15 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
             case R.id.id_btn_ticker:
                 Intent intent6=new Intent(getActivity(), TickerActivity.class);
                 startActivity(intent6);
+                break;
+
+            case R.id.id_btn_send:
+                Intent intent7=new Intent(getActivity(), SendPhoneActivity.class);
+                startActivity(intent7);
+                break;
+            case R.id.id_btn_led:
+                Intent intent8=new Intent(getActivity(), LedActivity.class);
+                startActivity(intent8);
                 break;
 
         }

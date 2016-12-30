@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#C48888</color>
     <color name="colorAccent">#D9B3B3</color>
     <color name="windowBackground">#fafafa</color>
+    <color name="common_red">#FF3300</color>
+    <color name="common_green">#FFFF00</color>
 
     <color name="recoveryColorPrimary">#C48888</color>
     <color name="recoveryColorPrimaryDark">#B87070</color>
