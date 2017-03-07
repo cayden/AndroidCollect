@@ -7,10 +7,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cayden.collect.R;
 import com.cayden.collect.WeakHandler;
+import com.cayden.collect.utils.ImageHelper;
 
 public class LedActivity extends AppCompatActivity {
     private static final String TAG="LedActivity";
@@ -23,15 +25,22 @@ public class LedActivity extends AppCompatActivity {
      * 创建 WatchDogHandler
      */
     private final Handler viewHandler = new ViewHandler(this);
+
+
+    private ImageView iv_test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_led);
 
         tv_led=(TextView)findViewById(R.id.tv_led);
-
+        iv_test=(ImageView)findViewById(R.id.iv_test);
 
         viewHandler.sendEmptyMessageDelayed(CMD_OPEN,2000);
+
+        String url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488874686179&di=568604cb687e8579ac786fedc99aaff4&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F48540923dd54564e1e1ac2d7b7de9c82d0584fe4.jpg";
+        new ImageHelper(this).display(iv_test,url);
     }
 
    public void check(){
